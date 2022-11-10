@@ -18,6 +18,7 @@ namespace StockController.Presenter
         protected readonly string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
         private IPrincipalRepository repository;
         private BindingSource productsBindingSource;
+        private IEnumerable<StockModel> stocklist = new List<StockModel>();
         private IEnumerable<PrincipalModel> productList = new List<PrincipalModel>();
       
         public PrincipalPresenter(IPrincipalView view, IPrincipalRepository repository)
@@ -31,9 +32,27 @@ namespace StockController.Presenter
             this.view.CancelProductEvent += CancelItem;
             this.view.SelectByNameEvent += SelectByName;
             this.view.ClearEvent += ClearAll;
+            this.view.PaymentEvent += PaymentWindow;
             this.view.ClearBoxesEvent += ClearBoxesEvent;
             this.view.SetProductListBindingSource(productsBindingSource);
             ClearBoxes();
+        }
+
+        private void PaymentWindow(object? sender, EventArgs e)
+        {
+            IPaymentView paymentView = new PaymentView();
+            IProductRepository productRepo = new ProductRepository(connectionString);
+            double totalValue = productList.ToList().Sum(item => item.Total);
+            new PaymentPresenter(paymentView, productRepo, totalValue);
+            if(paymentView.Finalized)
+            {
+                MessageBox.Show("VENDA COMPLETADA COM SUCESSO.");
+                repository.ClearRequest();
+                productList = repository.GetAll();
+                productsBindingSource.DataSource = repository.GetAll();
+                ClearBoxes();
+            }
+
         }
 
         private void ClearBoxesEvent(object? sender, EventArgs e)
@@ -57,10 +76,11 @@ namespace StockController.Presenter
                     productsBindingSource.DataSource = productList;
                     view.ProductId = model.Id.ToString();
                     view.ProductName = model.Name;
-                    view.ProductPrice = $"R${model.Price.ToString()}";
-                    view.ProductTotalPrice = $"R${(Convert.ToInt32(view.ProductQuantity) * model.Price).ToString()}";
-                    view.TotalItems = $"R${productList.Count().ToString()}";
-                    view.TotalPrice = $"R${productList.ToList().Sum(item => item.Total).ToString()}";
+                    view.ProductPrice = $"R${model.Price}";
+                    view.ProductTotalPrice = $"R${(Convert.ToInt32(view.ProductQuantity) * model.Price)}";
+                    view.TotalItems = $"{productList.Count()}";
+                    view.TotalPrice = $"R${productList.ToList().Sum(item => item.Total)}";
+                    
                 }
             }
             else
@@ -91,7 +111,7 @@ namespace StockController.Presenter
                 view.ProductName = model.Name;
                 view.ProductPrice = $"R${model.Price.ToString()}";
                 view.ProductTotalPrice = $"R${(Convert.ToInt32(view.ProductQuantity) * model.Price).ToString()}";
-                view.TotalItems = $"R${productList.Count().ToString()}";
+                view.TotalItems = $"{productList.Count().ToString()}";
                 view.TotalPrice = $"R${productList.ToList().Sum(item => item.Total).ToString()}";
                 
             }   
@@ -130,7 +150,7 @@ namespace StockController.Presenter
             view.ProductQuantity = "";
             view.ProductTotalPrice = "";
             view.CancelId = "";
-            view.TotalItems = $"R${productList.Count().ToString()}";
+            view.TotalItems = $"{productList.Count().ToString()}";
             view.TotalPrice = $"R${productList.ToList().Sum(item => item.Total).ToString()}";
         }
         

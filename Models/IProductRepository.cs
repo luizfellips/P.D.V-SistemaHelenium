@@ -11,6 +11,8 @@ namespace StockController.Models
         void Add(ProductModel petmodel);
         void Edit(ProductModel petmodel);
         void Delete(int id);
+
+        void UpdateQuantity(int id, int quantity);
         IEnumerable<ProductModel> GetAll();
         IEnumerable<ProductModel> GetByValue(string value); // searches
         IEnumerable<ProductModel> GetByCategory(string category);

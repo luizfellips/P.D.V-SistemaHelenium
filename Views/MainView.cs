@@ -17,6 +17,7 @@ namespace StockController.Views
             InitializeComponent();
             btnEstoque.Click += delegate { ShowStockView?.Invoke(this, EventArgs.Empty); };
             btnPrincipal.Click += delegate { ShowPOSView?.Invoke(this, EventArgs.Empty); };
+            btnUsuario.Click += delegate { ShowUserView?.Invoke(this, EventArgs.Empty); };
             btnClose.Click += delegate { this.Close(); };
             btnMinimize.Click += delegate { this.WindowState = FormWindowState.Minimized; };
         }

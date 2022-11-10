@@ -28,13 +28,17 @@ namespace StockController.Views
             switch (keys)
             {
                 case Keys.F2:
-                    var result = MessageBox.Show($"INICIAR NOVA VENDA? (ESSA AÇÃO LIMPARÁ A VENDA ATUAL).", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    var result = MessageBox.Show($"CANCELAR VENDA? (ESSA AÇÃO LIMPARÁ A VENDA ATUAL).", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
                         ClearEvent?.Invoke(this, EventArgs.Empty);
                         MessageBox.Show(Message);
                     }
                     return true;
+                case Keys.F3:
+                    PaymentEvent?.Invoke(this, EventArgs.Empty);
+                    return true;
+
                 case Keys.F5:
                      ClearBoxesEvent?.Invoke(this, EventArgs.Empty);
                     return true;
@@ -86,6 +90,7 @@ namespace StockController.Views
         public event EventHandler SearchEvent;
         public event EventHandler SelectByNameEvent;
         public event EventHandler ClearEvent;
+        public event EventHandler PaymentEvent;
         public event EventHandler ClearBoxesEvent;
         public event EventHandler CancelProductEvent;
 

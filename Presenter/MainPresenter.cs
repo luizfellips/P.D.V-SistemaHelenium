@@ -20,7 +20,15 @@ namespace StockController.Presenter
             this.sqlConnectionString = sqlConnectionString;
             this.mainView.ShowStockView += ShowStockView;
             this.mainView.ShowPOSView += ShowPOSView;
+            this.mainView.ShowUserView += ShowUserView;
         }
+
+        private void ShowUserView(object? sender, EventArgs e)
+        {
+            IUserView view = UserView.GetInstance();
+            IUserRepository repository = new UserRepository(sqlConnectionString);
+            new UserPresenter(view,repository);
+    }
 
         private void ShowPOSView(object? sender, EventArgs e)
         {

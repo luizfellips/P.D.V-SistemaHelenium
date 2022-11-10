@@ -20,6 +20,7 @@ namespace StockController.Views
         string Message { get; set; }
 
         //Events
+        event EventHandler PaymentEvent;
         event EventHandler SearchEvent;
         event EventHandler SelectByNameEvent;
         event EventHandler CancelProductEvent;

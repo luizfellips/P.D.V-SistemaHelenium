@@ -68,6 +68,19 @@ where Product_Id = @id";
                 command.ExecuteNonQuery();
 
             }
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"update StockControl 
+                                        set EndQuantity = @quantity
+                                        where id = @id";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = productmodel.Id;
+                command.Parameters.Add("@quantity", SqlDbType.Int).Value = productmodel.Quantity;
+                command.ExecuteNonQuery();
+
+            }
         }
 
             public IEnumerable<ProductModel> GetAll()
@@ -156,6 +169,20 @@ where Product_Id = @id";
                 }
             }
             return productList;
+        }
+
+        public void UpdateQuantity(int id, int quantity)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Update Products set Product_Quantity = Product_Quantity - @quantity where Product_Id = @id";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.Parameters.Add("@quantity", SqlDbType.Int).Value = quantity;
+                command.ExecuteNonQuery();
+            }
         }
     }
 }
