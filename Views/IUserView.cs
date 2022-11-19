@@ -25,5 +25,6 @@ namespace StockController.Views
 
         //properties
         void Show();
+        void Close();
     }
 }

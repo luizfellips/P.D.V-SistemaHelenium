@@ -33,6 +33,7 @@ namespace StockController.Views
                     MessageBox.Show("ESTOQUE LIMPO COM SUCESSO");
                 };
             };
+            btnChangeUser.Click += delegate { ChangeUserEvent?.Invoke(this, EventArgs.Empty); };
         }
 
         public string UserName

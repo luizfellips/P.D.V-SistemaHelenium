@@ -14,9 +14,11 @@ namespace StockController.Views
         string PaidPrice { get; set; }
         string ChangePrice { get; set; }
         bool Finalized { get; set; }
+        TextBox PaidBox { get; set; }
 
         //events
         event EventHandler FinalizeEvent;
+        event EventHandler SettedMethodEvent;
         event EventHandler CancelEvent;
         event EventHandler ChangeEvent;
 

@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnChangeUser = new System.Windows.Forms.Button();
             this.btnFecharCaixa = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnChangeUser);
             this.panel1.Controls.Add(this.btnFecharCaixa);
             this.panel1.Controls.Add(this.txtUser);
             this.panel1.Controls.Add(this.label1);
@@ -83,16 +83,16 @@
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnChangeUser
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(36, 326);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 58);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "TROCAR USUÁRIO";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnChangeUser.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnChangeUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnChangeUser.Location = new System.Drawing.Point(36, 326);
+            this.btnChangeUser.Name = "btnChangeUser";
+            this.btnChangeUser.Size = new System.Drawing.Size(150, 58);
+            this.btnChangeUser.TabIndex = 3;
+            this.btnChangeUser.Text = "TROCAR USUÁRIO";
+            this.btnChangeUser.UseVisualStyleBackColor = false;
             // 
             // btnFecharCaixa
             // 
@@ -325,7 +325,7 @@
         #endregion
 
         private Panel panel1;
-        private Button button2;
+        private Button btnChangeUser;
         private Button btnFecharCaixa;
         private TextBox txtUser;
         private Label label1;

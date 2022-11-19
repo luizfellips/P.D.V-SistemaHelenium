@@ -155,6 +155,7 @@
             this.txtQuant.Name = "txtQuant";
             this.txtQuant.Size = new System.Drawing.Size(73, 23);
             this.txtQuant.TabIndex = 9;
+            this.txtQuant.Text = "1";
             // 
             // txtUnitPrice
             // 

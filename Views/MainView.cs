@@ -15,6 +15,7 @@ namespace StockController.Views
         public MainView()
         {
             InitializeComponent();
+            MessageBox.Show("Seja bem-vindo!");
             btnEstoque.Click += delegate { ShowStockView?.Invoke(this, EventArgs.Empty); };
             btnPrincipal.Click += delegate { ShowPOSView?.Invoke(this, EventArgs.Empty); };
             btnUsuario.Click += delegate { ShowUserView?.Invoke(this, EventArgs.Empty); };

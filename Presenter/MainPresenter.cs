@@ -13,9 +13,11 @@ namespace StockController.Presenter
     {
         private IMainView mainView;
         private readonly string sqlConnectionString;
+        private int id;
 
-        public MainPresenter(IMainView mainView, string sqlConnectionString)
+        public MainPresenter(IMainView mainView, string sqlConnectionString, int id)
         {
+            this.id = id;
             this.mainView = mainView;
             this.sqlConnectionString = sqlConnectionString;
             this.mainView.ShowStockView += ShowStockView;
@@ -27,14 +29,14 @@ namespace StockController.Presenter
         {
             IUserView view = UserView.GetInstance();
             IUserRepository repository = new UserRepository(sqlConnectionString);
-            new UserPresenter(view,repository);
+            new UserPresenter(view,repository,this.id,mainView);
     }
 
         private void ShowPOSView(object? sender, EventArgs e)
         {
             IPrincipalView view = PrincipalView.GetInstance();
             IPrincipalRepository repository = new PrincipalRepository(sqlConnectionString);
-            new PrincipalPresenter(view, repository);
+            new PrincipalPresenter(view, repository, this.id);
         }
 
         private void ShowStockView(object? sender, EventArgs e)

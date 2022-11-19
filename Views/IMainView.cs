@@ -11,5 +11,8 @@ namespace StockController.Views
         event EventHandler ShowStockView;
         event EventHandler ShowPOSView;
         event EventHandler ShowUserView;
+
+        void Show();
+        void Close();
     }
 }

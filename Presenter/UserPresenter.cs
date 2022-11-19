@@ -14,15 +14,20 @@ namespace StockController.Presenter
     {
         private IUserView view;
         private IUserRepository repository;
+        private int id;
+        private IMainView mainView;
         protected readonly string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
 
-        public UserPresenter(IUserView view, IUserRepository repository)
+        public UserPresenter(IUserView view, IUserRepository repository, int id, IMainView mainView)
         {
+            this.mainView = mainView;
+            this.id = id;
             this.view = view;
             this.repository = repository;
             this.view.VisualizeStockEvent += OpenStock;
             this.view.CloseDayEvent += CloseDay;
-            UserModel model = this.repository.GetUserInformations(1);
+            this.view.ChangeUserEvent += ChangeUser;
+            UserModel model = this.repository.GetUserInformations(this.id);
             this.view.UserName = model.Name;
             this.view.TotalSellings = model.TotalSellings.ToString();
             this.view.CancelledSellings = model.CancelledSellings.ToString();
@@ -33,12 +38,18 @@ namespace StockController.Presenter
             this.view.MoneySellings = $"R${model.MoneySellings}";
         }
 
+        private void ChangeUser(object? sender, EventArgs e)
+        {
+            this.view.Close();
+            this.mainView.Close();
+        }
+
         private void CloseDay(object? sender, EventArgs e)
         {
             IStockRepository stockRepository = new StockRepository(connectionString);
             stockRepository.ClearDayStockControl();
-            repository.CloseDayUser(1);
-            UserModel model = this.repository.GetUserInformations(1);
+            repository.CloseDayUser(this.id);
+            UserModel model = this.repository.GetUserInformations(this.id);
             this.view.UserName = model.Name;
             this.view.TotalSellings = model.TotalSellings.ToString();
             this.view.CancelledSellings = model.CancelledSellings.ToString();

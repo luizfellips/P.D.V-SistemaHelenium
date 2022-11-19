@@ -16,6 +16,7 @@ namespace StockController.Presenter
         private IPaymentView view;
         private IProductRepository repository;
         private double totalValue;
+        private int id;
         private List<StockModel> stockList = new List<StockModel>();
         protected readonly string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
         internal List<StockModel> StockList 
@@ -24,15 +25,35 @@ namespace StockController.Presenter
             set => stockList = value;
         }
 
-        public PaymentPresenter(IPaymentView view, IProductRepository repository, double totalValue)
+        public PaymentPresenter(IPaymentView view, IProductRepository repository, double totalValue, int id)
         {
+            this.id = id;
             this.view = view;
             this.repository = repository;
             this.totalValue = totalValue;
             this.view.FinalizeEvent += FinalizePayment;
             this.view.ChangeEvent += SetChange;
+            this.view.SettedMethodEvent += SetBoxesByMethod;
             this.view.PaymentPrice = $"R${Math.Truncate(totalValue*100)/100}";
             this.view.ShowDialog();
+        }
+
+        private void SetBoxesByMethod(object? sender, EventArgs e)
+        {
+            string method = this.view.PaymentMethod;
+            if(method == "Money")
+            {
+                this.view.PaidBox.Focus();
+            }
+            else
+            {
+                this.view.PaidBox.Focus();
+                double totalPrice = this.totalValue;
+                double paidPrice = totalPrice;
+                double changePrice = paidPrice - totalPrice;
+                this.view.ChangePrice = $"R${Math.Truncate(changePrice * 100) / 100}";
+                this.view.PaidPrice = $"R${Math.Truncate(paidPrice * 100) / 100}";
+            }
         }
 
         private void SetChange(object? sender, EventArgs e)
@@ -66,7 +87,7 @@ namespace StockController.Presenter
                     }
                     repository.UpdateQuantity(model.Id, model.Quantity);
                 }
-                userRepository.SaveSellingData(1, this.view.PaymentMethod, totalValue);
+                userRepository.SaveSellingData(this.id, this.view.PaymentMethod, totalValue);
                 this.view.Finalized = true;
             }
             catch(Exception ex)

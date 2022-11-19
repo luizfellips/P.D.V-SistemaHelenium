@@ -17,12 +17,14 @@ namespace StockController.Presenter
         private IPrincipalView view;
         protected readonly string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
         private IPrincipalRepository repository;
+        private int id;
         private BindingSource productsBindingSource;
         private IEnumerable<StockModel> stocklist = new List<StockModel>();
         private IEnumerable<PrincipalModel> productList = new List<PrincipalModel>();
       
-        public PrincipalPresenter(IPrincipalView view, IPrincipalRepository repository)
+        public PrincipalPresenter(IPrincipalView view, IPrincipalRepository repository, int id)
         {
+            this.id = id;
             this.view = view;
             this.repository = repository;
             this.productsBindingSource = new BindingSource();
@@ -36,6 +38,7 @@ namespace StockController.Presenter
             this.view.ClearBoxesEvent += ClearBoxesEvent;
             this.view.SetProductListBindingSource(productsBindingSource);
             ClearBoxes();
+            this.view.ProductQuantity = "1";
         }
 
         private void PaymentWindow(object? sender, EventArgs e)
@@ -43,7 +46,7 @@ namespace StockController.Presenter
             IPaymentView paymentView = new PaymentView();
             IProductRepository productRepo = new ProductRepository(connectionString);
             double totalValue = productList.ToList().Sum(item => item.Total);
-            new PaymentPresenter(paymentView, productRepo, totalValue);
+            new PaymentPresenter(paymentView, productRepo, totalValue,this.id);
             if(paymentView.Finalized)
             {
                 MessageBox.Show("VENDA COMPLETADA COM SUCESSO.");

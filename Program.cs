@@ -24,9 +24,9 @@ namespace StockController
             Application.SetCompatibleTextRenderingDefault(false);
             ApplicationConfiguration.Initialize();
             string sqlConnectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
-            IMainView view = new MainView();
-            new MainPresenter(view, sqlConnectionString);
-
+            ILoginView view = new LoginView();
+            ILoginRepository repository = new LoginRepository(sqlConnectionString);
+            new LoginPresenter(view, repository);
             Application.Run((Form)view);
         }
     }

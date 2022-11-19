@@ -46,6 +46,13 @@ namespace StockController.Views
                     ChangeEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
+            comboPayment.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SettedMethodEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
         }
 
         public string PaymentMethod 
@@ -75,9 +82,16 @@ namespace StockController.Views
             set{ finalized = value; }
         }
 
+        public TextBox PaidBox 
+        {
+            get => txtPaidPrice;
+            set => txtPaidPrice = value; 
+        }
+
         public event EventHandler FinalizeEvent;
         public event EventHandler ChangeEvent;
         public event EventHandler CancelEvent;
+        public event EventHandler SettedMethodEvent;
 
         void IPaymentView.ShowDialog()
         {

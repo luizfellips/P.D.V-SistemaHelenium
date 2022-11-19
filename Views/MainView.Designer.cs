@@ -70,7 +70,7 @@
             this.btnPrincipal.Location = new System.Drawing.Point(12, 138);
             this.btnPrincipal.Name = "btnPrincipal";
             this.btnPrincipal.Size = new System.Drawing.Size(186, 41);
-            this.btnPrincipal.TabIndex = 2;
+            this.btnPrincipal.TabIndex = 1;
             this.btnPrincipal.Text = "Principal";
             this.btnPrincipal.UseVisualStyleBackColor = false;
             // 
@@ -81,7 +81,7 @@
             this.btnEstoque.Location = new System.Drawing.Point(12, 222);
             this.btnEstoque.Name = "btnEstoque";
             this.btnEstoque.Size = new System.Drawing.Size(186, 41);
-            this.btnEstoque.TabIndex = 1;
+            this.btnEstoque.TabIndex = 2;
             this.btnEstoque.Text = "Estoque";
             this.btnEstoque.UseVisualStyleBackColor = false;
             // 
