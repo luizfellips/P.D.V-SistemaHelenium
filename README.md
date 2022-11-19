@@ -18,10 +18,14 @@ Projeto no qual estou trabalhando para estudar minhas noções de P.O.O, padrõe
 - Tela de controle de saída de estoque funcional, contagem inicial do produto no dia fixada.
 - Fechamento de caixa 60% funcional.
 
+### 🔥 v2.0
+- Sistema de Log-In funcional com Hash MD5
+- Troca de usuário funcional
+- Sessão de usuário logado funcional
 
 ## ⚙️ Próximas atualizações
 
-- Sistema de log-in e adaptação do hardcode feito para as funcionalidades do usuário.
+- Criação de usuário novo.
 - adição do cancelamento de venda.
 - Relatório de fechamento de caixa.
 - Nota fiscal(?)
