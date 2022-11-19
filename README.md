@@ -22,6 +22,7 @@ Projeto no qual estou trabalhando para estudar minhas noções de P.O.O, padrõe
 - Sistema de Log-In funcional com Hash MD5
 - Troca de usuário funcional
 - Sessão de usuário logado funcional
+- Banco de dados disponibilizado ( HeleniumDb )
 
 ## ⚙️ Próximas atualizações
 
@@ -30,4 +31,3 @@ Projeto no qual estou trabalhando para estudar minhas noções de P.O.O, padrõe
 - adição do cancelamento de venda.
 - Relatório de fechamento de caixa.
 - Nota fiscal(?)
-- Disponibilização do banco de dados
