@@ -25,6 +25,7 @@ Projeto no qual estou trabalhando para estudar minhas noções de P.O.O, padrõe
 
 ## ⚙️ Próximas atualizações
 
+- Adicionar níveis de acesso de usuário
 - Criação de usuário novo.
 - adição do cancelamento de venda.
 - Relatório de fechamento de caixa.
