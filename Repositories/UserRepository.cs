@@ -36,6 +36,20 @@ namespace StockController.Repositories
             }
         }
 
+        public void CreateUser(LoginModel model)
+        {
+            string username = model.Username;
+            using(var connection = new SqlConnection(connectionString))
+                using(var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Insert into users values (@user,0,0,0,0,0,0)";
+                command.Parameters.Add("@user", SqlDbType.VarChar).Value = username;
+                command.ExecuteNonQuery();
+            }
+        }
+
         public UserModel GetUserInformations(int id)
         {
             UserModel model = new UserModel();

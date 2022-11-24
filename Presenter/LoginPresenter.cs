@@ -43,7 +43,8 @@ namespace StockController.Presenter
 
         private void CreateAccountView(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ICreateAccView createView = new CreateAccView();
+            new CreateAccPresenter(createView, repository);
         }
     }
 }
