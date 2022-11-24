@@ -24,13 +24,17 @@ Projeto no qual estou trabalhando para estudar minhas noções de P.O.O, padrõe
 - Sessão de usuário logado funcional
 - Banco de dados disponibilizado ( HeleniumDb )
 
+## 🔥 v2.5
+- Criação de usuário novo funcional
+- Correção de alguns bugs
+
 ## ⚙️ Próximas atualizações
 
 - Adicionar níveis de acesso de usuário
-- Criação de usuário novo.
 - adição do cancelamento de venda.
 - Relatório de fechamento de caixa.
 - Nota fiscal(?)
+
 
 ## FOTOS
 ![print1](https://user-images.githubusercontent.com/110192027/203840134-34be44fc-8b4f-416e-9e94-25f1ecb893dc.png)
