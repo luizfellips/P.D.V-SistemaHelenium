@@ -31,3 +31,10 @@ Projeto no qual estou trabalhando para estudar minhas noções de P.O.O, padrõe
 - adição do cancelamento de venda.
 - Relatório de fechamento de caixa.
 - Nota fiscal(?)
+
+## FOTOS
+![print1](https://user-images.githubusercontent.com/110192027/203840134-34be44fc-8b4f-416e-9e94-25f1ecb893dc.png)
+![print2](https://user-images.githubusercontent.com/110192027/203840147-57a0e5d7-4da4-4afd-833f-30c80ad14a9f.png)
+![print3](https://user-images.githubusercontent.com/110192027/203840168-089b4ebb-d851-4ec5-9cf5-8212f447544a.png)
+![print4](https://user-images.githubusercontent.com/110192027/203840177-473cd571-dc01-4736-baa0-e1578a1d59c2.png)
+![print5](https://user-images.githubusercontent.com/110192027/203840187-f4aea0ae-9fe5-495c-b6b4-cf97dea32601.png)
