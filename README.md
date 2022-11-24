@@ -24,7 +24,7 @@ Projeto no qual estou trabalhando para estudar minhas noções de P.O.O, padrõe
 - Sessão de usuário logado funcional
 - Banco de dados disponibilizado ( HeleniumDb )
 
-## 🔥 v2.5
+### 🔥 v2.5
 - Criação de usuário novo funcional
 - Correção de alguns bugs
 
